@@ -11,7 +11,8 @@
 const CCNet = require('./Constants');
 const CCNetParser = require('./CCNetParser');
 const EventEmitter = require('events');
-const SerialPort = require("serialport");
+const {SerialPort} = require("serialport");
+const path = require('path');
 
 /**
  * Class BillValidator
@@ -51,6 +52,7 @@ class BillValidator extends EventEmitter {
     
     /* Set comport options. */
     this.portOptions = {
+      path: port,
       baudRate: 9600,
       databits: 8,
       stopbit: 1,
@@ -59,7 +61,8 @@ class BillValidator extends EventEmitter {
     };
 
     /* Create comport driver.  */
-    this.serial = new SerialPort(this.port, this.portOptions, false);
+    // this.serial = new SerialPort(this.port, this.portOptions, false);
+    this.serial = new SerialPort(this.portOptions);
 
     /* On serial open event. */
     this.serial.on('open', function () {
@@ -933,7 +936,7 @@ class BillValidator extends EventEmitter {
         }
     }
 
-    var buf = new Buffer(2);
+    var buf = Buffer.alloc(2);
     buf.writeUInt16BE(CRC, 0);
     
     CRC = buf;

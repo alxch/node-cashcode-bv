@@ -36,7 +36,7 @@ class SetBarcodeParameters extends Command {
    * @param {Array} params 
    */
   request (params = [0x01, 0x06]) {
-    return this.assemble(new Buffer(params));
+    return this.assemble(Buffer.from(params));
   }
   
 }

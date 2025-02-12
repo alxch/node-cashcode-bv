@@ -26,7 +26,7 @@ class CCNetParser extends Transform {
     super(options);
     
     /* Packet container. */
-    this.packet = new Buffer(0);
+    this.packet = Buffer.alloc(0);
 
     /* Packet full length. */
     this.packetLength = 0;
@@ -50,7 +50,7 @@ class CCNetParser extends Transform {
       this.push(this.packet);
       
       /*  */
-      this.packet = new Buffer(0);
+      this.packet = Buffer.alloc(0);
       
       /*  */
       this.packetLength = 0;

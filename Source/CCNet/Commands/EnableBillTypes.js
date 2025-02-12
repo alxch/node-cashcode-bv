@@ -36,7 +36,7 @@ class EnableBillTypes extends Command {
    * @param {Array} params 
    */
   request (params = [0x00, 0x00, 0x00, 0x00, 0x00, 0x00]) {
-    return this.assemble(new Buffer(params));
+    return this.assemble(Buffer.from(params));
   }
 
 }

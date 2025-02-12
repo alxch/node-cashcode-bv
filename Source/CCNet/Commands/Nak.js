@@ -36,7 +36,7 @@ class Nak extends Command {
    * @param {*} data 
    */
   request () {
-    var cmd = new Buffer([
+    var cmd = Buffer.from([
       CCNet.SYNC,
       this.device.adr,
       0x06,

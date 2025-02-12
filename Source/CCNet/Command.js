@@ -42,7 +42,7 @@ class Command {
    * @param {Any} params 
    */
   request (params = []) {
-    return this.assemble(new Buffer(params));
+    return this.assemble(Buffer.from(params));
   }
 
   /**
@@ -62,24 +62,24 @@ class Command {
    * 
    * @param {Buffer} params 
    */
-  assemble (params = new Buffer(0)) {
+  assemble (params = Buffer.alloc(0)) {
     /* Assemble main packet data. */
     var cmd = Buffer.concat([
       /* Header. */
-      new Buffer(
+      Buffer.from(
         [
           CCNet.SYNC,
           this.device.adr
         ]
       ),
       /* Length. */
-      new Buffer(
+      Buffer.from(
         [
           (params.length + 6)
         ]
       ),
       /* Command. */
-      new Buffer(
+      Buffer.from(
         [
           this.cmd
         ]
