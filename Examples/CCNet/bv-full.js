@@ -12,7 +12,7 @@
 const { CCNet } = require('./../../Source');
 
 /*  */
-let device = new CCNet.BillValidator('COM6');
+let device = new CCNet.BillValidator('/dev/ttyUSB0');
 
 /*  */
 let counter = 0;
