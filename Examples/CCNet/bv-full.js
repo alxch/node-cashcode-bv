@@ -12,7 +12,9 @@
 const { CCNet } = require('./../../Source');
 
 /*  */
-let device = new CCNet.BillValidator('/dev/ttyUSB0');
+const BillValidator = require('../../Source/CCNet/BillValidator');
+/** @type {BillValidator} */
+let device = new CCNet.BillValidator('/dev/ttyUSB1');
 
 /*  */
 let counter = 0;
@@ -20,8 +22,8 @@ let counter = 0;
 /*  */
 async function init () {
   /*  */
-  device.on('status', function (status) {
-    //console.log('on:status', status);
+  device.on('status', function (status, secondStatus) {
+    console.log('on:status', Number(status).toString(16), "/", Number(secondStatus).toString(16));
   });
   
   /* ----------------------------------------------------------------------- */
@@ -128,7 +130,7 @@ async function init () {
       await device.stack();
 
       /*  */
-      counter++;
+      console.log('Counter:', ++counter);
     }
   });
 
@@ -165,10 +167,10 @@ async function init () {
   /* ----------------------------------------------------------------------- */
 
   /*  */
-  //await device.begin();
+  await device.begin();
 
   /*  */
-  //await device.close();
+  // await device.close();
 }
 
 init()
