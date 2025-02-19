@@ -14,10 +14,14 @@ let CCNet = require('./CCNet');
 /* Get CCTalk components. */
 let CCTalk = require('./CCTalk');
 
+let BillValidator = require('./CCNet/BillValidator');
+
 /* Export library objects. */
 module.exports = {
   /*  */
   CCNet,
+
+  BillValidator,
   
   /*  */
   CCTalk
