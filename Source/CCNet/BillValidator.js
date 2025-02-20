@@ -203,7 +203,8 @@ class BillValidator extends EventEmitter {
       /* Reset device. */
       await this.execute(this.commands.Reset);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw error;
     }
   }
 
@@ -214,7 +215,8 @@ class BillValidator extends EventEmitter {
     try {
       await this.execute(this.commands.EnableBillTypes, [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw error;
     }
   }
 
@@ -225,7 +227,8 @@ class BillValidator extends EventEmitter {
     try {
       await this.execute(this.commands.Stack);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw error;
     }
   }
 
@@ -236,7 +239,8 @@ class BillValidator extends EventEmitter {
     try {
       await this.execute(this.commands.Return);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw error;
     }
   }
 
@@ -247,7 +251,8 @@ class BillValidator extends EventEmitter {
     try {
       await this.execute(this.commands.EnableBillTypes, [0x00, 0x00, 0x00, 0x00, 0x00, 0x00]);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      throw error;
     }
   }
   
